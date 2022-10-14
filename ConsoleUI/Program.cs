@@ -10,44 +10,28 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            /*
-             * Todo follow all comments!! 
-             */
+            var vehicles = new List<Vehicle>();
+         
+            Car camry = new Car() { hasTrunk = true, Make = "Toyota", Model = "Camry", Year = 2010};
+           
+            Motorcycle honda = new Motorcycle() { hasSideCart = true, Make = "Honda", Model = "Pionner", Year = 2012 };
 
-            #region Vehicles
+            Vehicle limo = new Car() { hasTrunk = false, Make = "Cadillac", Model = "XST", Year = 2012 };
 
-            /*
-             * Create an abstract class called Vehicle
-             * The vehicle class shall have three string properties Year, Make, and Model
-             * Set the defaults to something generic in the Vehicle class
-             * Vehicle shall have an abstract method called DriveAbstract with no implementation
-             * Vehicle shall have a virtual method called DriveVirtual with a base implementation.
-             */
+            Vehicle convertible = new Car() { Make = "Porsche", Model = "Boxster", Year = 2013 };
 
-            /* 
-             * Now create 2 non-abstract classes: Car and Motorcycle, that inherit from Vehicle
-             * Add a distict property in the 2 derived classes such as HasTrunk for Car and HasSideCart for Motorcycle
-             * Provide the implementations for the abstract methods
-             * Only in the Motorcycle class will you override the virtual drive method
-            */
+            vehicles.Add(camry);
+            vehicles.Add(honda);
+            vehicles.Add(convertible);
+            vehicles.Add(limo);
 
-            // Create a list of Vehicle called vehicles
-
-            /*
-             * Create 4 instances: 1 Car, 1 Motorcycle, and then 2 instances of type Vehicle (use explicit typing) but use constuctors from derived classes
-             * - new it up as one of each derived class
-             * Set the properties with object initializer syntax
-             */
-
-            /*
-             * Add the 4 vehicles to the list
-             * Using a foreach loop iterate over each of the properties
-             */
-
-            // Call each of the drive methods for one car and one motorcycle
-
-            #endregion            
-            Console.ReadLine();
+            foreach (var vehicle in vehicles)
+            {
+                Console.WriteLine($"Make {vehicle.Make} Model {vehicle.Model} Year {vehicle.Year}");
+                //vehicle.DriveAbstract();
+                vehicle.DriveVirtual();
+                Console.WriteLine("==============================================");
+            }
         }
     }
 }
